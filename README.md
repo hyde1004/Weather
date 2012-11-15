@@ -3,7 +3,7 @@ Weather
 
 ###목적
 Ruby를 사용하여 기상청 날씨 정보를 가져오는 것을 목적으로 한다.
-날씨 정보는 기상청 (http://www.kma.go.kr/weather/lifenindustry/sevice_rss.jsp)에서 얻는다.
+날씨 정보는 기상청 ( http://www.kma.go.kr/weather/lifenindustry/sevice_rss.jsp ) 에서 얻는다.
 
 ###Input
 날씨를 얻기 위한 정보는 다음과 같다.

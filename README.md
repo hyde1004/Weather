@@ -19,8 +19,9 @@ Ruby를 사용하여 기상청 날씨 정보를 가져오는 것을 목적으로
 ## Example
 
 ````
-    도시 : 천안
-    날씨 : 맑음 
-    현재기온 : 5C
-    최저/최고 기온 : 0/11
+    City : 천안
+    Weather : 맑음 
+    Current Temp. : 5C
+    Min Temp. : 0C
+    Max Temp. : 11C
 ````

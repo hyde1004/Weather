@@ -11,9 +11,8 @@ class RssClient
 
 	attr_accessor :curTemp, :maxTemp, :sky, :time
 
-	def initialize
-#		@requestUrl = "http://www.ruby-lang.org/en/feeds/news.rss"
-		@requestUrl = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=4413357000"
+	def initialize(url)
+		@requestUrl = url
 	end
 	
 	def getInfo

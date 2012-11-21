@@ -3,7 +3,7 @@ require 'rexml/document'
 
 class RssClient
 	attr_accessor :requestUrl
-	attr_accessor :curTemp, :maxTemp, :sky, :time
+	attr_accessor :curTemp, :skyStatus, :publishedTime
 
 
 	def initialize(url)
@@ -19,6 +19,11 @@ class RssClient
 		#xml.root.elements[2].each { |e| puts e }
 		#puts xml.root.elements[2].elements["data[@seq='0]"]
 		#puts "Hour : #{xml.root.elements[2].elements["data[@seq='5']"].elements[1].text}"
-		@curTemp = xml.elements['//body/data[@seq="0"]/temp'].text
+		@publishedTime = xml.elements['//header/tm'].text
+
+		@curTemp =   xml.elements['//body/data[@seq="0"]/temp'].text
+		@skyStatus = xml.elements['//body/data[@seq="0"]/wfEn'].text
+
+
 	end
 end

@@ -13,12 +13,16 @@ class TestRssClient < Test::Unit::TestCase
 	def test_initialize
 		assert_raise(ArgumentError) { RssClient.new }
 
-		requestUrl = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=4413357000"		
+		requestUrl = "http://www.kma.go.kr/wid/queryDFS.jsp?gridx=63&gridy=111"		
 		assert_nothing_raised(ArgumentError) { RssClient.new(requestUrl)}
 	end
 
-	def test_readXml
-		
+	def test_getInfo
+		requestUrl = "http://www.kma.go.kr/wid/queryDFS.jsp?gridx=63&gridy=111"		
+		client = RssClient.new(requestUrl)
+		client.getInfo
+
+		assert_equal( client.curTemp, "7.2" )	# Current Temp.
 	end
 	
 end

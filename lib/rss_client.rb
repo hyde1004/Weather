@@ -1,31 +1,24 @@
 require 'open-uri'
-
-# <<<BEGIN
-# 	RSS Parser think stirng as long element.
-# 	It cannot parser last element.
-# 	I think XML parser will be better.
-# BEGIN
+require 'rexml/document'
 
 class RssClient
-
+	attr_accessor :requestUrl
 	attr_accessor :curTemp, :maxTemp, :sky, :time
+
 
 	def initialize(url)
 		@requestUrl = url
 	end
 	
 	def getInfo
-		
-		@time = "201211161100"
-		@sky = "Cloudy"
-		@curTemp = 9.0
-		@maxTemp = 10.0	
+		raw_xml = open( @requestUrl ).read		
+		xml = REXML::Document.new(raw_xml)
 
-#		rss = SimpleRSS.parse open(@requestUrl)
-
-#		@sky = rss.channel.items[0].description.body
-		# feed.items.description.body.data.each do |seq|
-		# 	puts "Item : #{seq.temp}"
-		# end
+		#puts "Root elements : #{xml.root.name}"
+		#puts "Elements : #{xml.root.elements[2].elements[1]}"
+		#xml.root.elements[2].each { |e| puts e }
+		#puts xml.root.elements[2].elements["data[@seq='0]"]
+		#puts "Hour : #{xml.root.elements[2].elements["data[@seq='5']"].elements[1].text}"
+		@curTemp = xml.elements['//body/data[@seq="0"]/temp'].text
 	end
 end

@@ -1,4 +1,3 @@
-#require 'simple-rss'
 require 'open-uri'
 
 # <<<BEGIN

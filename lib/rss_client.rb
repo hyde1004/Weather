@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'rexml/document'
+require 'scanf'
 
 class RssClient
 	attr_accessor :requestUrl
@@ -23,7 +24,16 @@ class RssClient
 
 		@curTemp =   xml.elements['//body/data[@seq="0"]/temp'].text
 		@skyStatus = xml.elements['//body/data[@seq="0"]/wfEn'].text
+	end
 
+	def showReport
+		#"Published Time : 2012-11-21 14:00\nCurrent Temp : 7.2\nSky Status : Mostly Cloudy"
 
+		#date = "2012-11-21"
+		#time = "14:00"
+		#"Published Time : #{date} #{time}\nCurrent Temp : #{@curTemp}\nSky Status : #{@skyStatus}"
+
+		year, month, day, hour, min = @publishedTime.scanf("%4c%2c%2c%2c%2c")
+		"Published Time : #{year}-#{month}-#{day} #{hour}:#{min}\nCurrent Temp : #{@curTemp}\nSky Status : #{@skyStatus}"		
 	end
 end

@@ -37,4 +37,12 @@ class TestRssClient < Test::Unit::TestCase
 		assert_equal( client.curTemp, "7.2" )	# Current Temp.
 		assert_equal( client.skyStatus, "Mostly Cloudy")
 	end	
+
+	def test_showReport
+		requestUrl = "./201211211400.xml"
+		client = RssClient.new(requestUrl)
+		client.getInfo
+		
+		assert_equal( client.showReport, "Published Time : 2012-11-21 14:00\nCurrent Temp : 7.2\nSky Status : Mostly Cloudy")
+	end
 end
